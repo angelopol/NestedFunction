@@ -2,6 +2,28 @@ from VerifyNumbers import VerifyNumbers
 
 def table(num):
 
+    def AddZeros(var, zeros):
+
+        """
+        Funcion para añadir ceros a los valores imprimidos en la tabla.
+
+        var = variable a la que se le añaden ceros
+
+        zeros = variable en la que se almacena la cantidad de ceros del ultimo resultado generado por la tabla. 
+        """
+
+        if len(var) < zeros:
+                
+                # Se compara la cantidad de caracteres del numero obtenido con el numero de ceros.
+
+                for j in range(zeros - len(var)):
+
+                    # Se añaden los ceros faltantes al numero obtenido.
+                    
+                    var = "0" + var
+
+        return var
+
     '''
     Funcion para imprimir una tabla de multiplicacion del 1 al 10 de forma vertical y centrada. Los ceros generados por la tabla son
     proporcionales a la cantidad de digitos que se obtenga en el ultimo resultado de la tabla, es decir, si el ultimo resultado es 100,
@@ -36,18 +58,11 @@ def table(num):
         numero = num
 
         # Se calcula la cantidad de ceros del ultimo resultado.
+
         ceros = len(str(int(num) * 10))
 
- 
-        if len(numero) < ceros:
-                
-                # Se compara la cantidad de caracteres del numero obtenido con el numero de ceros.
-
-                for j in range(ceros - len(numero)):
-
-                    # Se añaden los ceros faltantes al numero obtenido.
-                    
-                    numero = "0" + numero
+        # Se añaden los ceros con la funcion "AddZeros"
+        numero = AddZeros(numero, ceros)
 
         num = int(num)
         
@@ -61,25 +76,11 @@ def table(num):
             
             result = str(num * i)
 
-            if len(result) < ceros:
+            # Se añaden los ceros con la funcion "AddZeros"
+            result = AddZeros(result, ceros)
 
-                # Se compara la cantidad de caracteres del resultado obtenido con el numero de ceros.
-
-                for j in range(ceros - len(result)):
-
-                    # Se añaden los ceros faltantes al resultado obtenido.
-
-                    result = "0" + result
-
-            if len(str(i)) < ceros:
-
-                # Se compara la cantidad de caracteres de la variable iterable con el numero de ceros.
-                
-                for y in range(ceros - len(str(i))):
-
-                    # Se añaden los ceros faltantes a la variable iterable.
-
-                    i = "0" + str(i)
+            # Se añaden los ceros con la funcion "AddZeros"
+            i = AddZeros(str(i), ceros)
 
             # Se imprimen los datos con forma de tabla mientras son centrados por la funcion "center".
 
